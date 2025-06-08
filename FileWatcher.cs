@@ -19,7 +19,7 @@ public class FileWatcher
 
         _watcher = new FileSystemWatcher(_sourceDirectory);
 
-        _watcher.NotifyFilter = NotifyFilters.FileName | NotifyFilters.LastWrite;
+        // _watcher.NotifyFilter = NotifyFilters.FileName | NotifyFilters.LastWrite;
 
 
         _watcher.Filter = "*.*"; // Monitor all file types
