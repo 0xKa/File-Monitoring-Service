@@ -1,22 +1,27 @@
 namespace FileMonitoringService;
 
 using static FileMonitoringService.Utilities;
+using Microsoft.Extensions.Configuration;
 
 public class Worker : BackgroundService
 {
     private readonly ILogger<Worker> _logger;
+    private readonly IConfiguration _configuration;
 
     public const string ServiceInternalName = "FileMonitoringService";
-    private string _logDirectory; //note: we can use appsettings.json for this path, for more felxiblity.
+    private string _logDirectory;
     private string _logFile;
 
-
-    public Worker(ILogger<Worker> logger)
+    public Worker(ILogger<Worker> logger, IConfiguration configuration)
     {
         _logger = logger;
+        _configuration = configuration;
 
-        _logDirectory = CreateDirectoryWithinProject("Logs");
-        _logFile = CreateLogFile(_logDirectory, "ServiceLifecycle.log");
+        string logDirectoryName = _configuration["FileMonitoringLogs:LogDirectory"] ?? "Logs";
+        string logFileName = _configuration["FileMonitoringLogs:ServiceLifecycleLogFile"] ?? "temp.log";
+
+        _logDirectory = CreateDirectoryWithinProject(logDirectoryName);
+        _logFile = CreateLogFile(_logDirectory, logFileName);
     }
 
     private void LogMessage(string message)
@@ -46,7 +51,7 @@ public class Worker : BackgroundService
     public override Task StartAsync(CancellationToken cancellationToken)
     {
         LogMessage(Environment.UserInteractive ? "Running in console mode (UserInteractive = true)" : "Running as a Windows Service (UserInteractive = false)");
-        Console.WriteLine("Main Log File Path: " + _logFile);
+        LogMessage("Main Log File Path: " + _logFile);
         LogMessage("Service Started.");
         return base.StartAsync(cancellationToken);
     }
