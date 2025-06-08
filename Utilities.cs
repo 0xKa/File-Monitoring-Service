@@ -2,6 +2,25 @@ namespace FileMonitoringService;
 public class Utilities
 {
 
+    public static void LogMessage(string message, string logFile)
+    {
+        string fullMessage = $"[{DateTime.Now:yyyy-MM-dd HH:mm:ss}]: {message}";
+
+        try
+        {
+            File.AppendAllText(logFile, fullMessage + Environment.NewLine);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error writing to log file: {ex.Message}");
+        }
+
+        if (Environment.UserInteractive)
+            Console.WriteLine(fullMessage); // For debugging in console applications
+    }
+
+
+
     public static string GetProjectRootDirectory()
     {
         if (Environment.UserInteractive)
@@ -23,7 +42,7 @@ public class Utilities
         return newDirectory;
     }
 
-    public static string CreateLogFile(string directoryPath, string fileName, bool overwrite = false)
+    public static string CreateFile(string directoryPath, string fileName, bool overwrite = false)
     {
         string filePath = Path.Combine(directoryPath, fileName);
 
