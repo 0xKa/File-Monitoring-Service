@@ -120,12 +120,10 @@ public class Worker : BackgroundService
         {
             try
             {
-                // ===== WORKER LOGIC GOES HERE =====
 
                 if (_logger.IsEnabled(LogLevel.Information))
                     _logger.LogInformation("Worker running at: {time}", DateTimeOffset.Now);
 
-                // ===== END OF WORKER LOGIC =====
 
                 await Task.Delay(5000, stoppingToken);
             }
