@@ -1,16 +1,13 @@
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using FileMonitoringService; //The namespace of your Worker class
+using WorkerServiceTemplate;
+using WorkerServiceTemplate.Models;
 
+var builder = Host.CreateApplicationBuilder(args);
 
-Host.CreateDefaultBuilder(args)
-    .UseWindowsService() // Enables running as a Windows Service
-    .ConfigureServices((hostContext, services) =>
-    {
-        services.AddHostedService<Worker>();
-    })
-    .Build()
-    .Run();
+// Register your configuration
+builder.Services.Configure<AppConfiguration>(
+    builder.Configuration.GetSection("AppConfiguration"));
 
+builder.Services.AddHostedService<Worker>();
 
+var host = builder.Build();
+host.Run();
