@@ -9,9 +9,8 @@ namespace WorkerServiceTemplate.Models
     public class DirectoryConfig
     {
         public string Logs { get; set; } = "Logs";
-        public string Data { get; set; } = "Monitoring";
-        public string Source { get; set; } = "Source";
-        public string Destination { get; set; } = "Destination";
+        public string Monitoring { get; set; } = "Monitoring";
+
     }
 
     public class FileConfig

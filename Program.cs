@@ -3,7 +3,7 @@ using WorkerServiceTemplate.Models;
 
 var builder = Host.CreateApplicationBuilder(args);
 
-// Register your configuration
+// Register configuration
 builder.Services.Configure<AppConfiguration>(
     builder.Configuration.GetSection("AppConfiguration"));
 
