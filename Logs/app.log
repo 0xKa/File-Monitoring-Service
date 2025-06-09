@@ -78,3 +78,11 @@
 [2025-06-09 22:56:47]: Service 'FileMonitoringService' Started in Console Mode (UserInteractive = true).
 [2025-06-09 22:56:48]: Service 'FileMonitoringService' Stopped.
 [2025-06-09 22:56:48]: Worker execution cancelled
+[2025-06-09 23:12:09]: Service 'FileMonitoringService' Started in Windows Service (UserInteractive = false).
+[2025-06-09 23:13:53]: Service 'FileMonitoringService' Started in Windows Service (UserInteractive = false).
+[2025-06-09 23:29:05]: Service 'FileMonitoringService' Started in Windows Service (UserInteractive = false).
+[2025-06-09 23:29:09]: Service 'FileMonitoringService' Stopped.
+[2025-06-09 23:29:09]: Worker execution cancelled
+[2025-06-09 23:35:42]: Service 'FileMonitoringService' Started in Windows Service (UserInteractive = false).
+[2025-06-09 23:38:29]: Service 'FileMonitoringService' Stopped.
+[2025-06-09 23:38:29]: Worker execution cancelled
